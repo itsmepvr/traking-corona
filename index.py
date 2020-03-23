@@ -30,28 +30,28 @@ class RepeatedTimer(object):
     self.is_running = False
 
 def getResult():
-  response = requests.get("https://corona.lmao.ninja/all")
-  response = response.json()
+  newData = requests.get("https://corona.lmao.ninja/all")
+  newData = newData.json()
   with open('data.json', 'r+') as f:
-    data = json.load(f)
-    if(data != response):
+    oldData = json.load(f)
+    if(oldData != newData):
       wave_obj = sa.WaveObject.from_wave_file("scream.wav")
       play_obj = wave_obj.play()
       play_obj.wait_done()
       f.seek(0)
-      lastUpdated = response['updated'] - data['updated']
+      lastUpdated = newData['updated'] - oldData['updated']
       lastUpdated = lastUpdated/1000
       lastUpdated = str(round(lastUpdated/60, 1))
-      json.dump(response, f)
-      if(data['cases'] != response['cases']):
-        newCases = str(response['cases'] - data['cases'])
+      json.dump(newData, f)
+      if(oldData['cases'] != newData['cases']):
+        newCases = str(newData['cases'] - oldData['cases'])
         print(''+newCases+' Corona Positive cases added in the last '+lastUpdated+' minutes')
-      if(data['deaths'] != response['deaths']):
-        newDeaths = str(response['deaths'] - data['deaths'])
+      if(oldData['deaths'] != newData['deaths']):
+        newDeaths = str(newData['deaths'] - oldData['deaths'])
         print(''+newDeaths+' deaths are reported due to corona in the last '+lastUpdated+' minutes')
         print('Rest In Peace')
-      if(data['recovered'] != response['recovered']):
-        newDeaths = str(response['recovered'] - data['recovered'])
+      if(oldData['recovered'] != newData['recovered']):
+        newDeaths = str(newData['recovered'] - oldData['recovered'])
         print(''+newDeaths+' persons recoverd from corona in the last '+lastUpdated+' minutes')
     else:  
       print('No Changes in the last 1 minute..!!')      
