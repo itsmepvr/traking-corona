@@ -17,7 +17,8 @@ pip install -r requirements.txt
 ### Usage:
 ```bash
 run - python index.py
-For every 1 minute the data is updated and for any changes it screams out loud.```
+For every 1 minute the data is updated and for any changes it screams out loud.
+```
 
 ## Built With
 
