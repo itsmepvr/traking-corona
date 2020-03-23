@@ -10,15 +10,17 @@ API URI - https://corona.lmao.ninja/all (https://github.com/NovelCOVID/API)
 ```bash
 git clone "https://github.com/itsmepvr/tracking-corona.git"
 cd tracking-corona
+```
 Install pipenv for environment (optional)
+```bash
 pip install -r requirements.txt
 ```
 
 ### Usage:
 ```bash
-run - python index.py
-For every 1 minute the data is updated and for any changes it screams out loud and save the data to data.json file.
+python index.py
 ```
+For every 1 minute the data is updated and for any changes it screams out loud and save the data to data.json file.
 
 ## Built With
 
