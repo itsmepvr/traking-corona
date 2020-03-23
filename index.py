@@ -39,10 +39,24 @@ def getResult():
       play_obj = wave_obj.play()
       play_obj.wait_done()
       f.seek(0)
+      lastUpdated = response['updated'] - data['updated']
+      lastUpdated = lastUpdated/1000
+      lastUpdated = lastUpdated/60
       json.dump(response, f)
-      print('OOOOOOOpsss.....')	
-    else:
-      print('No Changes')  
+      if(data['cases'] != response['cases']):
+        newCases = response['cases'] - data['cases']
+        print(''+newCases+' Corona Positive cases added in the last '+lastUpdated+' minutes')
+      elif(data['deaths'] != response['deaths']):
+        newDeaths = response['deaths'] - data['deaths']
+        print(''+newDeaths+' deaths are reported due to corona in the last '+lastUpdated+' minutes')
+        print('Rest In Peace')
+      elif(data['recovered'] != response['recovered']):
+        newDeaths = response['recovered'] - data['recovered']
+        print(''+newDeaths+' persons recoverd from corona in the last '+lastUpdated+' minutes')
+    else:  
+      print('No Changes......')
+  RepeatedTimer(60, getResult)      
 
-rt = RepeatedTimer(60, getResult)
+
+getResult()
 
