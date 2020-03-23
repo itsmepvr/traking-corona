@@ -46,17 +46,15 @@ def getResult():
       if(data['cases'] != response['cases']):
         newCases = str(response['cases'] - data['cases'])
         print(''+newCases+' Corona Positive cases added in the last '+lastUpdated+' minutes')
-      elif(data['deaths'] != response['deaths']):
+      if(data['deaths'] != response['deaths']):
         newDeaths = str(response['deaths'] - data['deaths'])
         print(''+newDeaths+' deaths are reported due to corona in the last '+lastUpdated+' minutes')
         print('Rest In Peace')
-      elif(data['recovered'] != response['recovered']):
+      if(data['recovered'] != response['recovered']):
         newDeaths = str(response['recovered'] - data['recovered'])
         print(''+newDeaths+' persons recoverd from corona in the last '+lastUpdated+' minutes')
     else:  
-      print('No Changes in the last 1 minute..!!')
-  RepeatedTimer(60, getResult)      
+      print('No Changes in the last 1 minute..!!')      
 
-
-getResult()
+startTracking = RepeatedTimer(60, getResult)
 
