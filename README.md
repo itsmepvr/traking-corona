@@ -6,6 +6,8 @@ API URI - https://corona.lmao.ninja/all (https://github.com/NovelCOVID/API)
 
 ``` Shoutsout when there is a change in real time data in Corona cases ```
 
+![sample output image](output.png)
+
 ### Install: 
 ```bash
 git clone "https://github.com/itsmepvr/tracking-corona.git"
